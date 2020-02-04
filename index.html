@@ -1,0 +1,297 @@
+<script>
+	var dict = {};
+	function upcart(val,price,pname){
+		if(parseInt(document.getElementById(val).value,10) <= 0){
+			document.getElementById(val).value = "0";
+		}
+		else{
+			if(dict[val]){
+				var x = dict[val][1];
+				dict[val] = [price,parseInt(document.getElementById(val).value,10),pname];
+				document.getElementById('tbl_bdy').innerHTML = "";
+				for(var i = '1'; i <= '1'+0 ;i++){
+					var y = "pd"+i;
+					if(dict[y]){
+						document.getElementById('tbl_bdy').innerHTML += "<tr id = "+dict[y][2]+"><th>"+dict[y][2]+"</th><th>"+dict[y][0]+"</th><th>"+dict[y][1]+"</th></tr>";
+					}
+				}
+			}
+			else{
+				dict[val] = [price,parseInt(document.getElementById(val).value,10),pname];
+				document.getElementById('tbl_bdy').innerHTML += "<tr id = "+dict[val][2]+"><th>"+dict[val][2]+"</th><th>"+dict[val][0]+"</th><th>"+dict[val][1]+"</th></tr>";
+			}
+		}
+	}
+	function add(val){
+		document.getElementById(val).value =  parseInt(document.getElementById(val).value,10) + 1;
+	}
+	function rem(val){	
+		if( parseInt(document.getElementById(val).value,10) > 0){
+			document.getElementById(val).value =  parseInt(document.getElementById(val).value,10) - 1;
+		}
+	}
+	function checkOut(){
+		var cost = 0;
+		document.getElementById('tb2_bdy').innerHTML = "";
+		for(var i = '1'; i <= '1'+0 ;i++){
+			var y = "pd"+i;
+			if(dict[y]){
+				cost += dict[y][0]*dict[y][1];
+			}
+		}
+		if(cost > 0){
+			document.getElementById('tb2_bdy').innerHTML = "<tr><th>Amount</th><td align = center>"+cost+"</td></tr>";
+		}
+	}
+	function clr(){
+		dict = {};
+		document.getElementById('tbl_bdy').innerHTML = "<tr></tr>";
+		document.getElementById('tb2_bd	y').innerHTML = "<tr></tr>";
+
+	}
+	function disp(x){
+		document.getElementById(x).style.display = "block";
+	}
+	function hide(x){
+		document.getElementById(x).style.display = "none";
+	}
+</script>
+<link href = "styles.css" rel="stylesheet" type="text/css"/>
+<html>
+<head>
+	<title>E-Commerce</title>
+</head>
+<body bgcolor = "99ccff" > 
+	<h1 style="color:black;" align = "middle"> E-Commerce </h1>
+	<div>
+		<div class = "menu" style="width:5%;"><br></div>
+		<div id = "menu1" class = "menu" >
+			<ul onmouseenter = "disp('menu1-data');" onmouseleave = "hide('menu1-data');">
+				<li><b> Mobile & Accessories </b></li>
+				<div onmouseenter = "disp('menu1-data');" onmouseleave = "hide('menu1-data');" id = "menu1-data" class = "dlist">
+					<li>Smartphones</li>
+					<li>Basic Mobiles</li>
+					<li>Screen guard</li>
+					<li>Case & Covers</li>
+					<li>Powerbanks</li>
+				</div>
+			</ul>
+		</div>
+		<div id = "menu2" class = "menu" >
+			<ul onmouseenter = "disp('menu2-data');" onmouseleave = "hide('menu2-data');">
+				<li><b> TV & Electronics </b></li>
+				<div onmouseenter = "disp('menu2-data');" onmouseleave = "hide('menu2-data');" id = "menu2-data" class = "dlist">
+					<li>Camera</li>
+					<li>Headphones</li>
+					<li>TVs</li>
+					<li>Accessories</li>
+					<li>GPS & Vehicle Electronics</li>
+				</div>
+			</ul>
+		</div>
+		<div id = "menu3" class = "menu" >
+			<ul onmouseenter = "disp('menu3-data');" onmouseleave = "hide('menu3-data');">
+				<li><b> Computer & Peripherals </b></li>
+				<div onmouseenter = "disp('menu3-data');" onmouseleave = "hide('menu3-data');" id = "menu3-data" class = "dlist">
+					<li>Laptop</li>
+					<li>Monitor</li>
+					<li>Printers & Scanners</li>
+					<li>Storage</li>
+					<li>Components</li>
+				</div>
+			</ul>
+		</div>	
+		<div id = "menu4" class = "menu" >
+			<ul onmouseenter = "disp('menu4-data');" onmouseleave = "hide('menu4-data');">
+				<li><b> Women's Fashion </b></li>
+				<div onmouseenter = "disp('menu4-data');" onmouseleave = "hide('menu4-data');" id = "menu4-data" class = "dlist">
+					<li>Clothing</li>
+					<li>Western Wear</li>
+					<li>HandBag & Clutches</li>
+					<li>Jewellery</li>
+					<li>Ballerinas</li>
+				</div>
+			</ul>
+		</div>
+		<div id = "menu5" class = "menu" >
+			<ul onmouseenter = "disp('menu5-data');" onmouseleave = "hide('menu5-data');">
+				<li><b> Men's Fashion </b></li>
+				<div onmouseenter = "disp('menu5-data');" onmouseleave = "hide('menu5-data');" id = "menu5-data" class = "dlist">
+					<li>Clothing</li>
+					<li>T-Shirts & Polos</li>
+					<li>Shirts</li>
+					<li>Jeans</li>
+					<li>Sunglasses</li>
+				</div>
+			</ul>
+		</div>
+		<div id = "menu6" class = "menu" >
+			<ul onmouseenter = "disp('menu6-data');" onmouseleave = "hide('menu6-data');">
+				<li><b> Sports & fitness </b></li>
+				<div onmouseenter = "disp('menu6-data');" onmouseleave = "hide('menu6-data');" id = "menu6-data" class = "dlist">
+					<li>Cricket</li>
+					<li>Badminton</li>
+					<li>Cycling</li>
+					<li>Football</li>
+					<li>Yoga</li>
+				</div>
+			</ul>
+		</div>
+	</div>
+	
+	
+    <div id = "list" style="padding-top:100px;z-index:-1;">
+		<table align = "center" border width = "60%" cellpadding = "20" style="color:#001a33;" >        
+			<colgroup>
+				<col span="7" style="background-color: #deeaee">
+			</colgroup>
+			<thead>
+			<tr align = "center" style="background-color: #9eb5a7">
+				<th>S.No		</th>
+				<th>Name		</th>
+				<th>Product Description	</th>
+				<th>Photo</th>
+				<th>Price 		</th>
+				<th>Qty</th>
+				<td></td>
+			</tr>
+			</thead>
+			
+			<tbody>
+			<tr align = "center" onmouseover="this.style.backgroundColor = '#c3e0ce' ;" onmouseout="this.style.backgroundColor = '#deeaee';">
+				<th>1.</th>
+				<th>Shoe</th>
+				<td>-</td>
+				<td><img style = "width:90px; height:120px;" src = "img/1.jpg" alt = "PD1"></td>
+				<th>Rs.499</th>
+				<td><input type = "text" size = 3 id = "pd1" value = "0"><br><input type = "button" size = 1 value = "-" onclick = "rem('pd1')"><input type = "button" size = 1 value = "+" onclick = "add('pd1')"></td>
+				<th><input type = "button" onclick = "upcart('pd1',499,'Shoe');"><br>Add to cart</th>	
+			</tr>
+			<tr align = "center" onmouseover="this.style.backgroundColor = '#c3e0ce' ;" onmouseout="this.style.backgroundColor = '#deeaee';">
+				<th>2.</th>
+				<th>iPhoneXR</th>
+				<td>-</td>
+				<td><img style = "width:90px; height:120px;" src = "img/2.jpg" alt = "PD2"></td>
+				<th>Rs.67000</th>
+				<td><input type = "text" size = 3 id = "pd2" value = "0"><br><input type = "button" size = 1 value = "-" onclick = "rem('pd2')"><input type = "button" size = 1 value = "+" onclick = "add('pd2')"></td>
+				<th><input type = "button" onclick = "upcart('pd2',67000,'iPhoneXR');"><br>Add to cart</th>	
+			</tr>
+			<tr align = "center" onmouseover="this.style.backgroundColor = '#c3e0ce' ;" onmouseout="this.style.backgroundColor = '#deeaee';">
+				<th>3.</th>
+				<th>Beats Audio - Headphone</th>
+				<td>-</td>
+				<td><img style = "width:90px; height:120px;" src = "img/3.jpg" alt = "PD3"></td>
+				<th>Rs.11000</th>
+				<td><input type = "text" size = 3 id = "pd3" value = "0"><br><input type = "button" size = 1 value = "-" onclick = "rem('pd3')"><input type = "button" size = 1 value = "+" onclick = "add('pd3')"></td>
+				<th><input type = "button" onclick = "upcart('pd3',11000,'Beats Audio - Headphone');"><br>Add to cart</th>	
+			</tr>
+			<tr align = "center" onmouseover="this.style.backgroundColor = '#c3e0ce' ;" onmouseout="this.style.backgroundColor = '#deeaee';">
+				<th>4.</th>
+				<th>Ring</th>
+				<td>-</td>
+				<td><img style = "width:90px; height:120px;" src = "img/4.jfif" alt = "PD4"></td>
+				<th>Rs.199</th>
+				<td><input type = "text" size = 3 id = "pd4" value = "0"><br><input type = "button" size = 1 value = "-" onclick = "rem('pd4')"><input type = "button" size = 1 value = "+" onclick = "add('pd4')"></td>
+				<th><input type = "button" onclick = "upcart('pd4',199,'Ring');"><br>Add to cart</th>	
+			</tr>
+			<tr align = "center" onmouseover="this.style.backgroundColor = '#c3e0ce' ;" onmouseout="this.style.backgroundColor = '#deeaee';">
+				<th>5.</th>
+				<th>HandBag</th>
+				<td>-</td>
+				<td><img style = "width:90px; height:120px;" src = "img/5.jpg" alt = "PD5"></td>
+				<th>Rs.199</th>
+				<td><input type = "text" size = 3 id = "pd5" value = "0"><br><input type = "button" size = 1 value = "-" onclick = "rem('pd5')"><input type = "button" size = 1 value = "+" onclick = "add('pd5')"></td>
+				<th><input type = "button" onclick = "upcart('pd5',199,'HandBag');"><br>Add to cart</th>	
+			</tr>
+			<tr align = "center" onmouseover="this.style.backgroundColor = '#c3e0ce' ;" onmouseout="this.style.backgroundColor = '#deeaee';">
+				<th>6.</th>
+				<th>Wallet</th>
+				<td>-</td>
+				<td><img style = "width:90px; height:120px;" src = "img/6.jpg" alt = "PD6"></td>
+				<th>Rs.199</th>
+				<td><input type = "text" size = 3 id = "pd6" value = "0"><br><input type = "button" size = 1 value = "-" onclick = "rem('pd6')"><input type = "button" size = 1 value = "+" onclick = "add('pd6')"></td>
+				<th><input type = "button" onclick = "upcart('pd6',199,'Wallet');"><br>Add to cart</th>	
+			</tr>
+			<tr align = "center" onmouseover="this.style.backgroundColor = '#c3e0ce' ;" onmouseout="this.style.backgroundColor = '#deeaee';">
+				<th>7.</th>
+				<th>Watch</th>
+				<td>-</td>
+				<td><img style = "width:90px; height:120px;" src = "img/7.jpeg" alt = "PD7"></td>
+				<th>Rs.2000</th>
+				<td><input type = "text" size = 3 id = "pd7" value = "0"><br><input type = "button" size = 1 value = "-" onclick = "rem('pd7')"><input type = "button" size = 1 value = "+" onclick = "add('pd7')"></td>
+				<th><input type = "button" onclick = "upcart('pd7',2000,'Watch');"><br>Add to cart</th>	
+			</tr>
+			<tr align = "center" onmouseover="this.style.backgroundColor = '#c3e0ce' ;" onmouseout="this.style.backgroundColor = '#deeaee';">
+				<th>8.</th>
+				<th>Shampoo</th>
+				<td>-</td>
+				<td><img style = "width:90px; height:120px;" src = "img/8.jpg" alt = "PD8"></td>
+				<th>Rs.100</th>
+				<td><input type = "text" size = 3 id = "pd8" value = "0"><br><input type = "button" size = 1 value = "-" onclick = "rem('pd8')"><input type = "button" size = 1 value = "+" onclick = "add('pd8')"></td>
+				<th><input type = "button" onclick = "upcart('pd8',100,'Shampoo');"><br>Add to cart</th>	
+			</tr>
+			<tr align = "center" onmouseover="this.style.backgroundColor = '#c3e0ce' ;" onmouseout="this.style.backgroundColor = '#deeaee';">
+				<th>9.</th>
+				<th>Bag</th>
+				<td>-</td>
+				<td><img style = "width:90px; height:120px;" src = "img/9.gif" alt = "PD9"></td>
+				<th>Rs.4199</th>
+				<td><input type = "text" size = 3 id = "pd9" value = "0"><br><input type = "button" size = 1 value = "-" onclick = "rem('pd9')"><input type = "button" size = 1 value = "+" onclick = "add('pd9')"></td>
+				<th><input type = "button" onclick = "upcart('pd9',4199,'Bag');"><br>Add to cart</th>	
+			</tr>
+			<tr align = "center" onmouseover="this.style.backgroundColor = '#c3e0ce' ;" onmouseout="this.style.backgroundColor = '#deeaee';">
+				<th>10.</th>
+				<th>Flash</th>
+				<td>-</td>
+				<td><img style = "width:90px; height:120px;" src = "img/10.jpg" alt = "PD10"></td>
+				<th>Rs.3100</th>
+				<td><input type = "text" size = 3 id = "pd10" value = "0"><br><input type = "button" size = 1 value = "-" onclick = "rem('pd10')"><input type = "button" size = 1 value = "+" onclick = "add('pd10')"></td>
+				<th><input type = "button" onclick = "upcart('pd10',3100,'Flash');"><br>Add to cart</th>	
+			</tr>
+		</table>
+	</div>
+	<div id = "myCart" style = "padding-top:60px">
+		<h1 style="color:black;" align = "middle"> Cart </h1>
+		<table align = "center" border width = "60%" cellpadding = "20" style="color:#001a33;" >        
+			<colgroup>
+				<col span="7" style="background-color: #deeaee">
+			</colgroup>
+			<thead>
+			<tr align = "center" style="background-color: #9eb5a7">
+				<th>Name		</th>
+				<th>Price 		</th>
+				<th>Qty			</th>
+			</tr>
+			</thead>
+			<tbody id = "tbl_bdy">
+			
+			</tbody>
+		</table>
+		
+		<table align = "center" border width = "60%" cellpadding = "20" style="color:#001a33;" >        
+			<colgroup>
+				<col span="7" style="background-color: #deeaee">
+			</colgroup>
+			<thead>
+			<tr align = "center" style="background-color: #9eb5a7">
+				<th colspan = 2><input style = "width:400px;height:60px;"type="button" value = "Checkout" onclick = "checkOut();"></th>
+			</tr>			
+			</thead>
+			<tbody 	id = "tb2_bdy">
+			
+			</tbody>
+		</table>
+		<table align = "center" border width = "60%" cellpadding = "20" style="color:#001a33;" >        
+			<colgroup>
+				<col span="7" style="background-color: #deeaee">
+			</colgroup>
+			<thead>
+			<tr align = "center" style="background-color: #9eb5a7">
+				<th colspan = 2><input style = "width:400px;height:60px;"type="button" value = "Clear" onclick = "clr();"></th>
+			</tr>			
+			</thead>
+		</table>
+		
+	</div>
+</body>
+</html>

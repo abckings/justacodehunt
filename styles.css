@@ -1,0 +1,43 @@
+#list{
+	display : block;
+}
+#myCart{
+	display : block;
+}
+
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	width:  100%;
+}
+
+li{
+	text-align:center;
+	display: block;
+	padding: 10px 10px 5px 5px;
+	text-decoration: none;
+	background-color:#c3e0ce;
+	height:30px;
+}
+
+li:hover {
+	background-color:#deeaee;
+	font-weight:bold;
+}
+.menu{
+    width:200px;
+    float:left;
+	padding-right:2px;
+	padding-top:20px;
+
+}
+.dlist{
+	position: absolute;
+	left:relative;
+	top:relative;
+	display:none;
+	width:200px;
+    float:left;
+	z-index:1;
+}
