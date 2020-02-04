@@ -30,6 +30,10 @@
 			document.getElementById(val).value =  parseInt(document.getElementById(val).value,10) - 1;
 		}
 	}
+	function forLoop(){
+		var f = "F1ag 2 : output";
+		alert(document.getElementById('h').value);
+	}
 	function checkOut(){
 		var cost = 0;
 		document.getElementById('tb2_bdy').innerHTML = "";
@@ -44,6 +48,7 @@
 		}
 	}
 	function clr(){
+		forLoop();
 		dict = {};
 		document.getElementById('tbl_bdy').innerHTML = "<tr></tr>";
 		document.getElementById('tb2_bd	y').innerHTML = "<tr></tr>";
@@ -115,7 +120,7 @@
 		</div>
 		<div id = "menu5" class = "menu" >
 			<ul onmouseenter = "disp('menu5-data');" onmouseleave = "hide('menu5-data');">
-				<li><b> Men's Fashion </b></li>
+				<li "Flag1 : 5"><b> Men's Fashion </b></li>
 				<div onmouseenter = "disp('menu5-data');" onmouseleave = "hide('menu5-data');" id = "menu5-data" class = "dlist">
 					<li>Clothing</li>
 					<li>T-Shirts & Polos</li>
@@ -291,7 +296,7 @@
 			</tr>			
 			</thead>
 		</table>
-		
+		<button type = "hidden" id = "h" value = "4">
 	</div>
 </body>
 </html>
